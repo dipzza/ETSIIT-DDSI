@@ -1,0 +1,6 @@
+Para guardar las horas, minutos y segundos hay que hacer to_date('2019-03-28 11:00:00','yyyy/mm/dd hh24:mi:ss') y así se guardan.
+Si hacemos un SELECT simple sobre la tabla no se van a mostrar las fechas enteras, pero sí estan guardadas internamente, de hecho
+podemos mostrarlas con SELECT to_char(fecha, 'DD-MON-YYYY HH:MI:SS') FROM partido;
+
+A la hora de incluir un partido, la restricción permite incluir partidos 3h después de los partidos actuales o bien 3h antes.
+Por lo tanto hay que restringir el rango de 6h de los partidos actuales en la misma pista.

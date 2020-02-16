@@ -1,0 +1,2 @@
+1. Los insert han sido generados empleando https://mockaroo.com/ . Esto permite crear sentencias de insert de datos aleatorios. Esto hace que las fechas de las ediciones y partidos puedan no coincidir pero lso datos son completamente válidos para lo que se pide.
+2. El trigger se ha hecho a partir de la tabla Compite y no Partido ya que partido no contaba con un campo para la edición y comprar las fechas no es viable.

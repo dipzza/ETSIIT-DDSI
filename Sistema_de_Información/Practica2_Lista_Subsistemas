@@ -1,0 +1,108 @@
+Añadir ID a cada tabla
+
+Sistema para guardar información de distintas !Ediciones! de un torneo de tenis
+
+Entrenadores / tenistas
+	RF. Insertar nuevo entrenador (nombre (cadena hasta 30), apellido (cadena hasta 60), teléfono (cadena hasta 12, todos numéricos excepto el 1er +), email (cadena hasta 50 y contener el arroba)) (si se necesitan más campos se pueden añadir)
+	
+	RF. Insertar nuevo tenista (nombre (cadena hasta 30), apellido (cadena hasta 60), teléfono (cadena hasta 12, todos numéricos excepto el 1er +)) (si se necesitan más campos se pueden añadir)
+	
+	RF. Jugar en una edición (en una edición estaran unos jugadores y en otras no)
+	
+	RF. Asignar un entrenador a un tenista en una edición (podrá tener diferentes entrenadores en cada edición, pero solo un entrenador por edición) (un entrenador puede entrenar a varios tenistas en una edición) (preguntar por restricción semántica)
+	
+	RF. Consultar los tenistas de un entrenador (Dada una edición y un entrenador que tenistas entrena)
+	
+	RF. Consultar todos los entrenadores y sus tenistas (De una edición)
+
+	RF. Consultar tenistas no inscritos (que no participen en una edición)
+	
+	RF. Consultar tenistas por ranking (Dado un nº de ranking y una edición, devuelve los tenistas con ese ranking o inferior) (no puede haber 2 tenistas con el mismo ranking en la misma edición)
+	
+	(se pueden preguntar aclaraciones)
+
+Usuarios / entradas
+	RF. Nuevo usuario (nombre, apellidos, email, contraseña (40 caracteres alfanuméricos), notificaciones (booleano))
+	
+	RF. Nuevo tipo de entrada (Final, semifinal, rondas intermedias, ...)
+	
+	RF. Asignar precio de entrada en cada edición (según tipo)
+	
+	RF. Cantidad de entradas en cada edición (según tipo)
+	
+	(Un usuario solo puede realizar una compra por día)
+	RF. Iniciar compra (fecha que se inicia la compra (DDMMAA HHMMSS), usuario)
+	
+	RF. Añadir item a la compra (tipo de entrada, cantidad)
+	
+	RF. Finalizar compra (Marcar compra como finalizada, debe mostrar un identificador de compra, tipos de entrada y cantidad, cantidad total a pagar)
+	
+	RF. Pagar compra (Usando identificador, devuelve un número de ticket y el total de lo que ha pagado)
+	
+	RF. Consultar entradas (Dada la edición, devuelve el nº de entradas vendidas de cada tipo y precio.
+	
+	RF. Consultar dinero obtenido (Dada edición, cuanto se ha ganado por la venta de entradas)
+
+Árbitros
+	RF. Nuevo árbitro (nombre, apellidos, email, teléfono)
+	
+	RF. Ofertar (Enviar oferta con cantidad de dinero al árbitro) (debe guardarse todo en el sistema) (En cuanto la oferta o contraoferta sea aceptada o rechazada ya no se pueden hacer nuevas ofertas en esa edición) (Si el árbitro no responde podemos lanzar otra oferta) (Solo si el contraoferta TODAS las ofertas podemos hacer una nueva oferta)
+	
+	(Un trabajador no puede tener horarios de trabajo con < de 1 hora de diferencia) (no puede asignarse en dos tramos horarios de trabajo el mismo dia trabjar en el mismo sitio)
+	
+	RF. Asignar horario de trabajo (fecha ini, fecha fin, ubicación donde trabaja)
+	
+	RF. Comparar listado de trabajadores libres (Devuelve trabajadores que no esten trabajando en una edición en una fecha)
+	
+	RF. Mostrar horario de trabajador (Pasa id trabajador y edición)
+	RF. Aceptar oferta (árbitro acepta oferta)
+	
+	RF. Rechazar oferta (árbitro rechaza oferta)
+	
+	RF. Contraoferta (árbitro envía oferta pidiendo más dinero)
+	
+	RF. Aceptar contraoferta 
+	
+	RF. Rechazar contraoferta
+
+Personal / horarios
+	RF. Nuevo personal (nombre, apellidos, email, telefono)
+	
+	RF. Trabajar en una edición (asignar personal a trabajar en una edición)
+	
+	(Un trabajador no puede tener horarios de trabajo con < de 1 hora de diferencia) (no puede asignarse en dos tramos horarios de trabajo el mismo dia trabjar en el mismo sitio)
+	// Se da de entrada que trabajador?
+	RF. Asignar horario de trabajo (fecha ini, fecha fin, ubicación donde trabaja)
+	
+	RF. Comparar listado de trabajadores libres (Devuelve trabajadores que no esten trabajando en una edición en una fecha)
+	
+	// Muestra solo un horario o todos?
+	RF. Mostrar horario de trabajador (Pasa id trabajador, devuelve fecha, ubicación donde trabaja)
+	
+Partidos / Pistas
+	RF. Nueva pista (nombre, capacidad (nº hasta 4 cifras))
+	
+	(Solo se pueden añadir árbitros que hayan aceptado una oferta en esta edición) (En una pista no se pueden jugar más de 3 partidos en un día o poner 2 partidos con menos de 3 horas de diferencia)
+	RF. Insertar partido (idJugadores, pista, fecha, árbitro)
+	
+	RF. Añadir resultado (Resultado del partido)
+	
+	RF. Mostrar partidos en una fecha (pasa día y muestra todos los partidos con su info que se juegan ese día)
+	
+	RF. Mostrar partidos en una pista (muestra los partidos de una pista con toda su info)
+	
+Patrocinadores/Colaboradores
+    RF - Nueva entidad : registra una enitdad, el nombre, el tlf, el correo, persona de contacto(100c).
+    RF - Registrar colaborador en edición: nombre/ID, edicion, dinero. Una entidad no puede ser colaboradora y patrocinadora a la vez en la misma edición.
+    RF - Registrar patrocinador en edición: nombre/ID, edicion, dinero. Una entidad no puede ser colaboradora y patrocinadora a la vez en la misma edición.
+    RF - Consultar colaboradores en edición: edicion.
+    RF - Consultar colaboradores en edición: edicion.
+    RF - Consultar dinero total aportado colaboradores en una edicion: edicion.
+    RF - Consultar dinero total aportado patrocinadores en una edicion: edicion.
+
+Materiales/Pedidos
+    RF - Añadir material: nombre(50c), cantidad, patrocinador que suministra.
+    RF - Realizar pedido de materiales: materiales, cantidades, pistas donde se entrega. Un pedido solo puede contener materiales de un solo patrocinador.
+    RF - Entregar pedido: trabajador que lo va a recoger, fecha(día y hora). No podemos asignar a un mismo trabajador dos pedidos con menos de una hora de diferencia.
+    RF - Consultar trabajador que tiene que recoger el pedido en una fecha: fecha y pedido.
+    RF - Mostrar pedidos en una pista: pista, fecha.
